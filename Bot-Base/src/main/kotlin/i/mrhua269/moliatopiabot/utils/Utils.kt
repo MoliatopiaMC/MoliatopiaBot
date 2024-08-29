@@ -48,7 +48,6 @@ object Utils {
     }
 
     fun getBytes(url1: String?): ByteArray? {
-        LogManager.getLogger().info("Downloading:{}", url1)
         val url = URL(url1)
         val connection = url.openConnection() as HttpURLConnection
         connection.setRequestProperty("User-Agent", randomUserAgent)
