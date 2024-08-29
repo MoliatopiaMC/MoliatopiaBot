@@ -36,8 +36,8 @@ class OpenAIAPIRequester (
     suspend fun requestAPI(
         messages: List<MemoryInstance>,
         model: String = "chatgpt-4o-latest",
-        temperature: Double = 0.8,
-        maxTokens: Int = 3248,
+        temperature: Double = 1.0,
+        maxTokens: Int = 4096,
         topP: Double = 1.0,
         frequencyPenalty: Double = 0.0,
         presencePenalty: Double = 0.0
