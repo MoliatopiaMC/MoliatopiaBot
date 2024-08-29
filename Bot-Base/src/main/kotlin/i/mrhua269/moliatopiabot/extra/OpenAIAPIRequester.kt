@@ -22,7 +22,8 @@ class OpenAIAPIRequester (
 
     companion object {
         fun JsonObject.toMemoryInstance(): MemoryInstance {
-            val choices = this["choices"].asJsonArray
+            val choices = this["choices"]?.asJsonArray ?: throw RuntimeException("No choices found in the response: $this")
+
             val firstChoice = choices[0].asJsonObject
             val message = firstChoice["message"].asJsonObject
 
@@ -83,7 +84,8 @@ class OpenAIAPIRequester (
 
             val call: Call = client.newCall(request)
             val response: Response = call.execute()
-            val parsed = JsonParser.parseString(response.body!!.string()).asJsonObject
+            val str = response.body!!.string()
+            val parsed = JsonParser.parseString(str).asJsonObject
 
             return@withContext parsed
         }
