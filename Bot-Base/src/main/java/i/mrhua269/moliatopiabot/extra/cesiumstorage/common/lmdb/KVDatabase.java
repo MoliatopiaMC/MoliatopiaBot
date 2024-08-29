@@ -3,12 +3,9 @@ package i.mrhua269.moliatopiabot.extra.cesiumstorage.common.lmdb;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.DatabaseSpec;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.ICloseableIterator;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.IKVDatabase;
-import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.ICompressor;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.IScannable;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.ISerializer;
-import i.mrhua269.moliatopiabot.extra.cesiumstorage.common.DefaultCompressors;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.common.DefaultSerializers;
-import i.mrhua269.moliatopiabot.manager.ConfigManager;
 import org.lmdbjava.Cursor;
 import org.lmdbjava.Dbi;
 import org.lmdbjava.DbiFlags;
@@ -28,8 +25,6 @@ public class KVDatabase<K, V> implements IKVDatabase<K, V> {
     private final ISerializer<K> keySerializer;
     private final ISerializer<V> valueSerializer;
 
-    private final ICompressor compressor;
-
     public KVDatabase(LMDBInstance storage, DatabaseSpec<K, V> spec) {
         this.storage = storage;
 
@@ -38,10 +33,6 @@ public class KVDatabase<K, V> implements IKVDatabase<K, V> {
 
         this.keySerializer = DefaultSerializers.getSerializer(spec.getKeyType());
         this.valueSerializer = DefaultSerializers.getSerializer(spec.getValueType());
-
-        this.compressor = false
-                ? DefaultCompressors.NONE
-                : DefaultCompressors.ZSTD;
     }
 
     @Override
@@ -62,16 +53,8 @@ public class KVDatabase<K, V> implements IKVDatabase<K, V> {
                 return null;
             }
 
-            byte[] decompressed;
-
             try {
-                decompressed = this.compressor.decompress(buf);
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to decompress value", e);
-            }
-
-            try {
-                return this.valueSerializer.deserialize(decompressed);
+                return this.valueSerializer.deserialize(buf);
             } catch (Exception e) {
                 throw new RuntimeException("Failed to deserialize value", e);
             }
@@ -105,15 +88,8 @@ public class KVDatabase<K, V> implements IKVDatabase<K, V> {
                 return;
             }
 
-            byte[] decompressed;
             try {
-                decompressed = this.compressor.decompress(buf);
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to decompress value", e);
-            }
-
-            try {
-                ((IScannable<T>) this.valueSerializer).scan(decompressed, scanner);
+                ((IScannable<T>) this.valueSerializer).scan(buf, scanner);
             } catch (Exception ex) {
                 throw new RuntimeException("Failed to scan value", ex);
             }
@@ -135,11 +111,6 @@ public class KVDatabase<K, V> implements IKVDatabase<K, V> {
     @Override
     public ISerializer<V> getValueSerializer() {
         return this.valueSerializer;
-    }
-
-    @Override
-    public ICompressor getCompressor() {
-        return this.compressor;
     }
 
     public void putValue(Txn<byte[]> txn, K key, byte[] value) {

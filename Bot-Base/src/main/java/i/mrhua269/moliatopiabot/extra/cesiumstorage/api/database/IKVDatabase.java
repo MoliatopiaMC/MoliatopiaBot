@@ -1,6 +1,5 @@
 package i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database;
 
-import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.ICompressor;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.ISerializer;
 
 public interface IKVDatabase<K, V> {
@@ -11,8 +10,6 @@ public interface IKVDatabase<K, V> {
     ISerializer<K> getKeySerializer();
 
     ISerializer<V> getValueSerializer();
-
-    ICompressor getCompressor();
 
     ICloseableIterator<K> getIterator();
 }

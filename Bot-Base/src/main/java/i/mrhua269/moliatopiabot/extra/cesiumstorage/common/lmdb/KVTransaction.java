@@ -23,11 +23,8 @@ public class KVTransaction<K, V> implements IKVTransaction<K, V> {
             byte[] data = null;
 
             if (value != null) {
-                byte[] serialized = this.storage.getValueSerializer()
+                data = this.storage.getValueSerializer()
                         .serialize(value);
-
-                data = this.storage.getCompressor()
-                        .compress(serialized);
             }
 
             synchronized (this.pending) {
