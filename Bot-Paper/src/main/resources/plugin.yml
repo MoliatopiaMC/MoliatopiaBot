@@ -1,0 +1,5 @@
+name: MoliatopiaBot
+version: '${version}'
+main: i.mrhua269.moliatopiabot.paper.MoliatopiaBot
+api-version: '1.20'
+folia-supported: true

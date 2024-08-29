@@ -1,2 +1,5 @@
 rootProject.name = 'MoliatopiaBot'
+include 'Bot-Base'
+include 'Bot-Paper'
+include 'Bot-Standalone'
 

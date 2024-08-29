@@ -1,6 +1,0 @@
-name: MoliatopiaBot
-version: '${version}'
-main: i.mrhua269.moliatopiabot.MoliatopiaBot
-api-version: '1.13'
-
-folia-supported: true
