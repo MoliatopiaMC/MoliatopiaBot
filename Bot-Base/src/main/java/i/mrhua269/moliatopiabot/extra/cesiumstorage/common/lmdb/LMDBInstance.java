@@ -48,7 +48,7 @@ public class LMDBInstance implements IDBInstance {
 
         this.env = Env.create(ByteArrayProxy.PROXY_BA)
                 .setMaxDbs(databases.length)
-                .open(dir.resolve(name + (ConfigManager.INSTANCE.getReadConfig().getAiUseDatabaseCompression() ? ".cdb" : ".db")).toFile(), EnvFlags.MDB_NOLOCK, EnvFlags.MDB_NOSUBDIR);
+                .open(dir.resolve(name + (".db")).toFile(), EnvFlags.MDB_NOLOCK, EnvFlags.MDB_NOSUBDIR);
 
         this.resizeStep = Arrays.stream(databases).mapToInt(DatabaseSpec::getInitialSize).sum();
 
@@ -173,7 +173,7 @@ public class LMDBInstance implements IDBInstance {
 
         this.env.setMapSize(newSize);
 
-        if (ConfigManager.INSTANCE.getReadConfig().getLogDatabaseGrow()) {
+        if (ConfigManager.INSTANCE.getReadConfig().getAilogDatabaseGrow()) {
             LogManager.getLogger().info("Grew map size from {} to {} MB", (oldSize / 1024 / 1024), (newSize / 1024 / 1024));
         }
     }

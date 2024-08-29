@@ -39,7 +39,7 @@ public class KVDatabase<K, V> implements IKVDatabase<K, V> {
         this.keySerializer = DefaultSerializers.getSerializer(spec.getKeyType());
         this.valueSerializer = DefaultSerializers.getSerializer(spec.getValueType());
 
-        this.compressor = ConfigManager.INSTANCE.getReadConfig().getAiUseDatabaseCompression()
+        this.compressor = false
                 ? DefaultCompressors.NONE
                 : DefaultCompressors.ZSTD;
     }
