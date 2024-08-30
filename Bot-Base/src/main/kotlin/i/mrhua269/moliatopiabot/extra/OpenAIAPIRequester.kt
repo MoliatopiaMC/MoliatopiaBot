@@ -80,9 +80,11 @@ class OpenAIAPIRequester (
                 .url(url)
                 .post(body)
                 .addHeader("Content-Type", "application/json")
+
             if (apiKey != "none"){
                 requestBuilder = requestBuilder.addHeader("Authorization", "Bearer $apiKey")
             }
+
             val request = requestBuilder.build()
 
             val call = client.newCall(request)
