@@ -48,18 +48,23 @@ object AIConvertorEventHandler : Listener {
                         }
                     }
 
-                    withContext(EventHub.getDispatcher()) {
-                        logger.info("[AIConvertor] ${targetFeedback.id}(in ${group.id}) -> AI : $messageFullyProcessed")
+                    logger.info("[AIConvertor] ${targetFeedback.id}(in ${group.id}) -> AI : $messageFullyProcessed")
 
-                        val buildContent = "${targetFeedback.nameCardOrNick} 说: $messageFullyProcessed"
-                        val convertFeedback = AIConvertor.converse(group.id.toString(), buildContent)
+                    val buildContent = "${targetFeedback.nameCardOrNick} 说: $messageFullyProcessed"
+                    val convertFuture = AIConvertorController.converse(group.id.toString(), buildContent)
+
+                    convertFuture.whenComplete { result, _ ->
+                        if (result == null){
+                            runBlocking { group.sendMessage("Out of speed limit!") }
+                            return@whenComplete
+                        }
 
                         val builtReply = MessageChainBuilder()
                         builtReply.add(At(targetFeedback.id))
-                        builtReply.add(convertFeedback.content)
+                        builtReply.add(result.content)
 
-                        logger.info("[AIConvertor] AI -> ${targetFeedback.id}(in ${group.id}) : ${convertFeedback.content}")
-                        group.sendMessage(builtReply.build())
+                        logger.info("[AIConvertor] AI -> ${targetFeedback.id}(in ${group.id}) : ${result.content}")
+                        runBlocking { group.sendMessage(builtReply.build()) }
                     }
                 }
             }

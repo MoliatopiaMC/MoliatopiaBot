@@ -6,6 +6,7 @@ import kotlinx.coroutines.withContext
 import net.mamoe.mirai.event.Event
 import org.apache.logging.log4j.LogManager
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
@@ -17,6 +18,10 @@ object EventHub {
 
     fun getDispatcher(): CoroutineDispatcher {
         return this.dispatcher
+    }
+
+    fun getWorkerExecutor(): ExecutorService {
+        return this.workerExecutor
     }
 
     fun notifyAllLoaded() {

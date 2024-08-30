@@ -1,14 +1,8 @@
 package i.mrhua269.moliatopiabot.command.commandentry
 
 import i.mrhua269.moliatopiabot.command.PackagedCommandInfo
-import i.mrhua269.moliatopiabot.extra.AIConvertor
-import net.mamoe.mirai.contact.nameCardOrNick
 import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.event.events.MessageEvent
-import net.mamoe.mirai.message.data.At
-import net.mamoe.mirai.message.data.MessageChainBuilder
-import net.mamoe.mirai.message.data.PlainText
-import java.lang.reflect.Member
 
 class AIConversationCommand: CommandEntry {
     override fun getName(): String {
