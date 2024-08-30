@@ -10,7 +10,7 @@ import java.nio.file.Files
 object ConfigManager {
     private var configFile = ConfigFile()
     private val configFileEntry = File(Bootstrapper.BASE_DIR, "config.json")
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
     private val gson = GsonBuilder().setPrettyPrinting().create()
 
     fun initConfig() {

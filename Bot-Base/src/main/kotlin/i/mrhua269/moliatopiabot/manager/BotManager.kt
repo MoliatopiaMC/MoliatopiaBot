@@ -19,7 +19,7 @@ object BotManager {
     private val loadedBots: MutableSet<BotEntry> = ConcurrentHashMap.newKeySet()
     private lateinit var currentConfig: BotConfigEntry
     private val gson = GsonBuilder().setPrettyPrinting().create()
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
 
     fun readConfig() {
         if (this.configArrayFile.exists()) {

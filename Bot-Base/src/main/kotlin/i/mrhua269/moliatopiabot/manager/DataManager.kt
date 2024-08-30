@@ -9,7 +9,7 @@ import java.nio.file.Files
 
 object DataManager {
     private val gson = GsonBuilder().setPrettyPrinting().create()
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
     private val dataFile = File(Bootstrapper.BASE_DIR, "botdata.json")
     private var currentDataFile = DataFile(0)
 

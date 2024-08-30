@@ -10,7 +10,6 @@ class ConfigFile(
     private val enableProxy: Boolean = false,
     private val proxyIp: String = "",
     private val proxyPort: Int = 0,
-    val aiDatabaseCompression: Int = 12,
     val ailogDatabaseGrow: Boolean = false,
     val aiConversationEnabled: Boolean = false,
     val aiDatabaseSaveIntervalSeconds: Int = 30,

@@ -10,7 +10,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 object EventHub {
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
     private val workerExecutor = Executors.newCachedThreadPool()
     private val dispatcher = PackagedDispatcher(this.workerExecutor)
     private val listeners: MutableSet<Listener> = ConcurrentHashMap.newKeySet()

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager
 import java.util.concurrent.atomic.AtomicReference
 
 object CommandParser : Listener {
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
     private val currListener = AtomicReference<Bot>()
 
     private suspend fun processEvent(event: Event) {

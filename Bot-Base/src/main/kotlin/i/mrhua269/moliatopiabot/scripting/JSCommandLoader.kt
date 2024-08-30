@@ -16,7 +16,7 @@ import javax.script.ScriptEngineManager
 class JSCommandLoader {
     companion object{
         private val loadedCommands: MutableSet<PackagedJSCommand> = ConcurrentHashMap.newKeySet()
-        private val logger = LogManager.getLogger()
+        private val logger = LogManager.getLogger(this::class.java)
         private var currentScriptDir: File? = null
 
         private fun registerToCommandList(){

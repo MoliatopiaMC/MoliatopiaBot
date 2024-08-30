@@ -123,7 +123,7 @@ public class LMDBInstance implements IDBInstance {
                     continue;
                 }
 
-                LogManager.getLogger().info("Commit of transaction failed; trying again ({}/{}): {}", tries, this.MAX_COMMIT_TRIES, l.getMessage());
+                LogManager.getLogger(LMDBInstance.class).info("Commit of transaction failed; trying again ({}/{}): {}", tries, this.MAX_COMMIT_TRIES, l.getMessage());
             }
 
             if (tries == (MAX_COMMIT_TRIES - 1)) {
@@ -174,7 +174,7 @@ public class LMDBInstance implements IDBInstance {
         this.env.setMapSize(newSize);
 
         if (ConfigManager.INSTANCE.getReadConfig().getAilogDatabaseGrow()) {
-            LogManager.getLogger().info("Grew map size from {} to {} MB", (oldSize / 1024 / 1024), (newSize / 1024 / 1024));
+            LogManager.getLogger(LMDBInstance.class).info("Grew map size from {} to {} MB", (oldSize / 1024 / 1024), (newSize / 1024 / 1024));
         }
     }
 

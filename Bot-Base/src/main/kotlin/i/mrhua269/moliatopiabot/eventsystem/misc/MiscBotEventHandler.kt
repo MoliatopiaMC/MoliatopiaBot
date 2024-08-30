@@ -6,7 +6,7 @@ import net.mamoe.mirai.event.events.BotInvitedJoinGroupRequestEvent
 import org.apache.logging.log4j.LogManager
 
 object MiscBotEventHandler: Listener {
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
 
     override suspend fun onEvent(event: Event): Boolean {
         if (event is BotInvitedJoinGroupRequestEvent){

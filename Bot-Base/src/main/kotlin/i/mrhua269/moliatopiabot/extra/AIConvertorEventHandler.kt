@@ -13,7 +13,7 @@ import net.mamoe.mirai.message.data.PlainText
 import org.apache.logging.log4j.LogManager
 
 object AIConvertorEventHandler : Listener {
-    private val logger = LogManager.getLogger()
+    private val logger = LogManager.getLogger(this::class.java)
 
     override suspend fun onEvent(event: Event): Boolean {
         if (event is GroupMessageEvent) {

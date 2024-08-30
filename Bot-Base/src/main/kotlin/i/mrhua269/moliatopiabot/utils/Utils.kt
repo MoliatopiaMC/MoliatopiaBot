@@ -34,7 +34,7 @@ object Utils {
             if (connection.responseCode == 200) {
                 return readInputStreamToByte(connection.inputStream)
             } else {
-                LogManager.getLogger().error(
+                LogManager.getLogger(this::class.java).error(
                     "Response code:{} Response:{}", connection.responseCode, String(
                         readInputStreamToByte(connection.inputStream)
                     )
@@ -59,7 +59,7 @@ object Utils {
             if (connection.responseCode == 200) {
                 return readInputStreamToByte(connection.inputStream)
             } else {
-                LogManager.getLogger().error(
+                LogManager.getLogger(this::class.java).error(
                     "Response code:{} Response:{}", connection.responseCode, String(
                         readInputStreamToByte(connection.inputStream)
                     )

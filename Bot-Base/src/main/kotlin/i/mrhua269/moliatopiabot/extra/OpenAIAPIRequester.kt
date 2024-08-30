@@ -41,7 +41,7 @@ class OpenAIAPIRequester (
         maxTokens: Int = 4096,
         topP: Double = 1.0,
         frequencyPenalty: Double = 0.0,
-        presencePenalty: Double = 0.0
+        presencePenalty: Double = 0.0,
     ): JsonObject {
         val memoryRecords = JsonArray(messages.size)
 
@@ -63,6 +63,7 @@ class OpenAIAPIRequester (
         builtJsonData.add("presence_penalty", JsonPrimitive(presencePenalty))
         builtJsonData.add("frequency_penalty", JsonPrimitive(frequencyPenalty))
         builtJsonData.add("messages", memoryRecords)
+        builtJsonData.add("stream", JsonPrimitive(false)) //Force disable stream responsing
 
         val url = URL(this.apiUrl)
 
@@ -72,18 +73,20 @@ class OpenAIAPIRequester (
                 .readTimeout(Duration.ofSeconds(30))
                 .writeTimeout(Duration.ofSeconds(30))
                 .build()
-            val mediaType: MediaType = "application/json".toMediaTypeOrNull()!!
+            val mediaType = "application/json".toMediaTypeOrNull()!!
 
-            val body: RequestBody = RequestBody.create(mediaType, builtJsonData.toString())
-            val request: Request = Request.Builder()
+            val body = RequestBody.create(mediaType, builtJsonData.toString())
+            var requestBuilder = Request.Builder()
                 .url(url)
                 .post(body)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer $apiKey")
-                .build()
+            if (apiKey != "none"){
+                requestBuilder = requestBuilder.addHeader("Authorization", "Bearer $apiKey")
+            }
+            val request = requestBuilder.build()
 
-            val call: Call = client.newCall(request)
-            val response: Response = call.execute()
+            val call = client.newCall(request)
+            val response = call.execute()
             val str = response.body!!.string()
             val parsed = JsonParser.parseString(str).asJsonObject
 
