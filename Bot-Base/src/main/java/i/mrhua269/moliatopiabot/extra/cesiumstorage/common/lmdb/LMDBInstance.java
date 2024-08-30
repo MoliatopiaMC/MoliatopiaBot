@@ -173,7 +173,7 @@ public class LMDBInstance implements IDBInstance {
 
         this.env.setMapSize(newSize);
 
-        if (ConfigManager.INSTANCE.getReadConfig().getAilogDatabaseGrow()) {
+        if (ConfigManager.INSTANCE.getReadConfig().getAiLogDatabaseGrow()) {
             LogManager.getLogger(LMDBInstance.class).info("Grew map size from {} to {} MB", (oldSize / 1024 / 1024), (newSize / 1024 / 1024));
         }
     }
