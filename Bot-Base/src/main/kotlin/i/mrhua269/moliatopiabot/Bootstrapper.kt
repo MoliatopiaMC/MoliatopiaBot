@@ -1,15 +1,18 @@
 package i.mrhua269.moliatopiabot
 
-import i.mrhua269.moliatopiabot.command.CommandList
-import i.mrhua269.moliatopiabot.command.CommandParser
-import i.mrhua269.moliatopiabot.command.commandentry.*
-import i.mrhua269.moliatopiabot.eventsystem.EventHub
-import i.mrhua269.moliatopiabot.eventsystem.misc.MiscBotEventHandler
-import i.mrhua269.moliatopiabot.extra.AIConvertorEventHandler
-import i.mrhua269.moliatopiabot.manager.BotManager
-import i.mrhua269.moliatopiabot.manager.ConfigManager
-import i.mrhua269.moliatopiabot.manager.DataManager
-import i.mrhua269.moliatopiabot.scripting.JSCommandLoader
+import i.mrhua269.moliatopiabot.commanding.CommandList
+import i.mrhua269.moliatopiabot.commanding.CommandParser
+import i.mrhua269.moliatopiabot.base.event.EventHub
+import i.mrhua269.moliatopiabot.misc.MiscBotEventHandler
+import i.mrhua269.moliatopiabot.extra.ai.AIConvertorEventHandler
+import i.mrhua269.moliatopiabot.base.manager.BotManager
+import i.mrhua269.moliatopiabot.base.manager.ConfigManager
+import i.mrhua269.moliatopiabot.base.manager.DataManager
+import i.mrhua269.moliatopiabot.commanding.impl.DebugCommand
+import i.mrhua269.moliatopiabot.commanding.impl.RPIC3Command
+import i.mrhua269.moliatopiabot.commanding.impl.RPICCommand
+import i.mrhua269.moliatopiabot.commanding.impl.ReloadCommand
+import i.mrhua269.moliatopiabot.extra.scripting.JSCommandLoader
 import java.io.File
 
 object Bootstrapper {

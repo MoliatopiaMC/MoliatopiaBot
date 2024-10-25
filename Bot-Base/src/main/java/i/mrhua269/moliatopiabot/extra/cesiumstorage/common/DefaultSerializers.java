@@ -4,7 +4,7 @@ import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.ISerializer;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.common.serializer.MemoryInstanceArraySerializer;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.common.serializer.StringSerializer;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.common.serializer.UUIDSerializer;
-import i.mrhua269.moliatopiabot.extra.OpenAIAPIRequester;
+import i.mrhua269.moliatopiabot.extra.ai.OpenAIAPIRequester;
 import it.unimi.dsi.fastutil.objects.Reference2ReferenceMap;
 import it.unimi.dsi.fastutil.objects.Reference2ReferenceOpenHashMap;
 import java.util.UUID;

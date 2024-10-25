@@ -1,7 +1,7 @@
 package i.mrhua269.moliatopiabot.extra.cesiumstorage.common.serializer;
 
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.io.ISerializer;
-import i.mrhua269.moliatopiabot.extra.OpenAIAPIRequester;
+import i.mrhua269.moliatopiabot.extra.ai.OpenAIAPIRequester;
 
 import java.io.*;
 

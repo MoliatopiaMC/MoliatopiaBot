@@ -34,8 +34,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
 
-    implementation "top.mrxiaom:overflow-core-api:2.16.0-e2ed65e-SNAPSHOT"
-    implementation "top.mrxiaom:overflow-core:2.16.0-e2ed65e-SNAPSHOT"
+    implementation "top.mrxiaom.mirai:overflow-core-api:1.0.0.519-0d68f08-SNAPSHOT"
+    implementation "top.mrxiaom.mirai:overflow-core:1.0.0.519-0d68f08-SNAPSHOT"
 
     implementation "net.mamoe:mirai-core-api-jvm:2.15.0"
 

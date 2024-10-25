@@ -4,7 +4,7 @@ import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.DatabaseSpec;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.IDBInstance;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.IKVDatabase;
 import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.IKVTransaction;
-import i.mrhua269.moliatopiabot.manager.ConfigManager;
+import i.mrhua269.moliatopiabot.base.manager.ConfigManager;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import org.apache.logging.log4j.LogManager;
