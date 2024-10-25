@@ -1,6 +1,6 @@
 package i.mrhua269.moliatopiabot.commanding
 
-import i.mrhua269.moliatopiabot.commanding.impl.CommandEntry
+import i.mrhua269.moliatopiabot.extra.commands.CommandEntry
 import java.util.concurrent.ConcurrentHashMap
 
 object CommandList {

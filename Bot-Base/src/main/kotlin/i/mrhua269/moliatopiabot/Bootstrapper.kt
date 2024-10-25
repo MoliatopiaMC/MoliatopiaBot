@@ -8,10 +8,10 @@ import i.mrhua269.moliatopiabot.extra.ai.AIConvertorEventHandler
 import i.mrhua269.moliatopiabot.base.manager.BotManager
 import i.mrhua269.moliatopiabot.base.manager.ConfigManager
 import i.mrhua269.moliatopiabot.base.manager.DataManager
-import i.mrhua269.moliatopiabot.commanding.impl.DebugCommand
-import i.mrhua269.moliatopiabot.commanding.impl.RPIC3Command
-import i.mrhua269.moliatopiabot.commanding.impl.RPICCommand
-import i.mrhua269.moliatopiabot.commanding.impl.ReloadCommand
+import i.mrhua269.moliatopiabot.extra.commands.DebugCommand
+import i.mrhua269.moliatopiabot.extra.commands.RPIC3Command
+import i.mrhua269.moliatopiabot.extra.commands.RPICCommand
+import i.mrhua269.moliatopiabot.extra.commands.ReloadCommand
 import i.mrhua269.moliatopiabot.extra.scripting.JSCommandLoader
 import java.io.File
 

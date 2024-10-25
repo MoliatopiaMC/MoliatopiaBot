@@ -4,8 +4,8 @@ import i.mrhua269.moliatopiabot.Bootstrapper
 import i.mrhua269.moliatopiabot.extra.ai.OpenAIAPIRequester
 import i.mrhua269.moliatopiabot.extra.ai.aistorage.impl.DefaultBotMemoryCleaner
 import i.mrhua269.moliatopiabot.extra.ai.aistorage.impl.DefaultBotMemoryCompressor
-import i.mrhua269.moliatopiabot.extra.cesiumstorage.api.database.DatabaseSpec
-import i.mrhua269.moliatopiabot.extra.cesiumstorage.common.lmdb.LMDBInstance
+import i.mrhua269.moliatopiabot.extra.storage.cesium.api.database.DatabaseSpec
+import i.mrhua269.moliatopiabot.extra.storage.cesium.common.lmdb.LMDBInstance
 import i.mrhua269.moliatopiabot.base.manager.ConfigManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,17 +14,19 @@ import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 
 object AIMemoryStorage {
-    private val memoryDatabaseSpec = DatabaseSpec(
-        "memory",
-        String::class.java,
-        Array<OpenAIAPIRequester.MemoryInstance>::class.java,
-        8 * 1024
-    )
-    private val memoryDatabase = LMDBInstance(
-        Bootstrapper.BASE_DIR.toPath(),
-        "memory",
-        arrayOf(memoryDatabaseSpec)
-    )
+    private val memoryDatabaseSpec =
+        DatabaseSpec(
+            "memory",
+            String::class.java,
+            Array<OpenAIAPIRequester.MemoryInstance>::class.java,
+            8 * 1024
+        )
+    private val memoryDatabase =
+        LMDBInstance(
+            Bootstrapper.BASE_DIR.toPath(),
+            "memory",
+            arrayOf(memoryDatabaseSpec)
+        )
     private val saveScheduler = Executors.newScheduledThreadPool(1)
     @Volatile
     private var closed: Boolean = false

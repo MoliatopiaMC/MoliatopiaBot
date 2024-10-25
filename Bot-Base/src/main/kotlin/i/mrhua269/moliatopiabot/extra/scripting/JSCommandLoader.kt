@@ -1,7 +1,7 @@
 package i.mrhua269.moliatopiabot.extra.scripting
 
 import i.mrhua269.moliatopiabot.commanding.CommandList
-import i.mrhua269.moliatopiabot.commanding.impl.jsproxy.PackagedJSCommand
+import i.mrhua269.moliatopiabot.extra.commands.jsproxy.PackagedJSCommand
 import org.apache.logging.log4j.LogManager
 import java.io.File
 import java.nio.charset.StandardCharsets
